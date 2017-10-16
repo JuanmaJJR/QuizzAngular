@@ -49,17 +49,20 @@ export class Actividad1 implements EventsAdminListener{
         
 
        //AÑADIR BOTON SALIR
-       this.buttonSalir=new Button(this.motor,380,300,100,100);
+       this.buttonSalir=new Button(this.motor,340,320,200,100);
        this.buttonSalir.setTexto("SALIR");
        this.motor.addViewToParentView(this.window1,this.buttonSalir);
+       this.buttonSalir.setImagePath('./assets/btn.png')
        //AÑADIR BOTON CONTINUAR
-       this.buttonContinuar=new Button(this.motor,380,200,100,100);
+       this.buttonContinuar=new Button(this.motor,340,180,200,100);
        this.buttonContinuar.setTexto("CONTINUAR");
        this.motor.addViewToParentView(this.window1,this.buttonContinuar);
+       this.buttonContinuar.setImagePath('./assets/btn.png')
        //AÑADIR BOTON NUEVO
-       this.buttonNuevo=new Button(this.motor,380,100,100,100);
+       this.buttonNuevo=new Button(this.motor,340,40,200,100);
        this.buttonNuevo.setTexto("NUEVO");
        this.motor.addViewToParentView(this.window1,this.buttonNuevo);
+       this.buttonNuevo.setImagePath('./assets/btn.png')
 
     }
 
