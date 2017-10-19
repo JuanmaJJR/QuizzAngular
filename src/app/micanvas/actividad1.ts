@@ -29,6 +29,8 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private buttonResp2:Button;
     private buttonResp3:Button;
     private buttonResp4:Button;
+    private buttonX:Button;
+    private arrPreg[];
     
 
 
@@ -88,6 +90,11 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.lblPreg= new Label(this.motor,340,40,200,100);
             this.lblPreg.setTexto("PREGUNTA 1 LOCO");
             this.motor.addViewToParentView(this.w2,this.lblPreg);
+            //CREAMOS BOTON X
+            this.buttonX = new Button (this.motor,700,-30,200,100);
+            this.buttonX.setTexto("X");
+            this.motor.addViewToParentView(this.w2,this.buttonX);
+            this.buttonX.setListener(this);
             //CREAMOS BOTON RESPUESTA 1
             this.buttonResp1 = new Button (this.motor,120,220,200,100);
             this.buttonResp1.setTexto("RESPUESTA 1");
@@ -104,13 +111,16 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonResp4 = new Button (this.motor,520,320,200,100);
             this.buttonResp4.setTexto("RESPUESTA 4");
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
-            
         }
         if(btn==this.buttonContinuar){
-            this.buttonNuevo.setTexto("ADIOS");
+            this.motor.setViewVisibility(this.w2.uid,true);
         }
         if(btn==this.buttonSalir){
             this.buttonNuevo.setTexto("ADIOS");
+        }
+        if(btn==this.buttonX){
+            this.lblPreg.setTexto("salimos");
+            this.motor.setViewVisibility(this.w2.uid,false);
         }
         
 
