@@ -113,7 +113,7 @@ export class Label extends View{
         this.sTexto=vtexto;
     }
 
-    
+    //HEMOS CREADO ESTE METODO PARA SACAR EL TEXTO DEL BOTON SELECCIONADO
     public getTexto():string{
         return this.sTexto;
     }

@@ -82,6 +82,7 @@ export class Button extends View {
     public setTexto(vtexto:string){
         this.lblTexto.setTexto(vtexto);
     }
+    //HEMOS CREADO ESTE METODO PARA SACAR EL TEXTO DEL BOTON SELECCIONADO
     public getLbl():Label{
        return this.lblTexto;
     }

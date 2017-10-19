@@ -125,15 +125,19 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonResp4.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
         }
+        //VOLVEMOS A LA PANTALLA EN LA QUE ESTABAMOS JUGANDO
         if(btn==this.buttonContinuar){
             this.motor.setViewVisibility(this.w2.uid,true);
         }
+        //SALIR DEL JUEGO
         if(btn==this.buttonSalir){
             this.buttonNuevo.setTexto("ADIOS");
         }
+        //SALIMOS AL MENU INICIAL
         if(btn==this.buttonX){
             this.motor.setViewVisibility(this.w2.uid,false);
         }
+        //SI ACIERTAS LA PRIMERA PREGUNTA
         if(btn.getLbl().getTexto()==this.arrayRespCorrec[0]){
             this.lblPreg.setTexto(this.arrayPreguntas[1]);
             this.buttonResp1.setTexto(this.arrayResp[1][0]);
@@ -141,19 +145,28 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonResp3.setTexto(this.arrayResp[1][2]);
             this.buttonResp4.setTexto(this.arrayResp[1][3]);
         }
+        //SI ACIERTAS LA SEGUNDA PREGUNTA
         else if(btn.getLbl().getTexto()==this.arrayRespCorrec[1]){
+        
             this.lblPreg.setTexto(this.arrayPreguntas[2]);
             this.buttonResp1.setTexto(this.arrayResp[2][0]);
             this.buttonResp2.setTexto(this.arrayResp[2][1]);
             this.buttonResp3.setTexto(this.arrayResp[2][2]);
             this.buttonResp4.setTexto(this.arrayResp[2][3]);
         }
+        //SI ACIERTAS LA TERCERA PREGUNTA, PONEMOS NUEVA VIEW DE VICTORIA
         else if(btn.getLbl().getTexto()==this.arrayRespCorrec[2]){
             this.w3=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
             this.motor.addViewToParentView(this.imagenFondo,this.w3);
             this.imagenGanar=new Imagen(this.motor,0,0,this.pmw,this.pmh);
             this.imagenGanar.setImg('./assets/hasganado.jpg');
             this.motor.addViewToParentView(this.w3,this.imagenGanar);
+
+        }
+
+        //SI FALLAMOS SALIMOS AL MENU PRINCIPAL. AÑADIDOS A LA CONDICION TAMBIEN LOS BOTONES DE NUEVO Y CONTINUAR PARA NO QUITAR SU FUNCIONALIDAD
+        else if(btn!=this.buttonNuevo&& btn.getLbl().getTexto()!=this.arrayRespCorrec[0] && btn.getLbl().getTexto()!=this.arrayRespCorrec[1] && btn.getLbl().getTexto()!=this.arrayRespCorrec[2] && btn!=this.buttonContinuar) {
+            this.motor.setViewVisibility(this.w2.uid,false);
 
         }
         
