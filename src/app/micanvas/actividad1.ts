@@ -30,7 +30,11 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private buttonResp3:Button;
     private buttonResp4:Button;
     private buttonX:Button;
-    private arrPreg[];
+    private arrayPreguntas: any[];
+    private arrayResp: any[];
+    private arrayRespCorrec: any[];
+
+    
     
 
 
@@ -40,6 +44,8 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.imagenFondo.setImg('./assets/1.jpg');
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
+        this.arrayPreguntas=["¿Qué es una criptomoneda?"," ¿No existen entonces monedas y billetes de divisas digitales?"," Si no hay bancos centrales, ¿quién está detrás de las criptomonedas?"];
+        this.arrayResp=[["Medio digital de intercambio","Moneda oficial del planeta cripto","Es una moneda intercambiable en un videojuego", "Una equacion matemática"]];
     }
 
     /**
@@ -88,7 +94,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.motor.addViewToParentView(this.imagenFondo,this.w2);
             //CREAMOS LABEL DE LA PREGUNTA
             this.lblPreg= new Label(this.motor,340,40,200,100);
-            this.lblPreg.setTexto("PREGUNTA 1 LOCO");
+            this.lblPreg.setTexto(this.arrayPreguntas[0]);
             this.motor.addViewToParentView(this.w2,this.lblPreg);
             //CREAMOS BOTON X
             this.buttonX = new Button (this.motor,700,-30,200,100);
@@ -97,19 +103,19 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonX.setListener(this);
             //CREAMOS BOTON RESPUESTA 1
             this.buttonResp1 = new Button (this.motor,120,220,200,100);
-            this.buttonResp1.setTexto("RESPUESTA 1");
+            this.buttonResp1.setTexto(this.arrayResp[0][0]);
             this.motor.addViewToParentView(this.w2,this.buttonResp1);
             //CREAMOS BOTON RESPUESTA 2
             this.buttonResp2 = new Button (this.motor,520,220,200,100);
-            this.buttonResp2.setTexto("RESPUESTA 2");
+            this.buttonResp2.setTexto(this.arrayResp[0][1]);
             this.motor.addViewToParentView(this.w2,this.buttonResp2);
             //CREAMOS BOTON RESPUESTA 3
             this.buttonResp3 = new Button (this.motor,120,320,200,100);
-            this.buttonResp3.setTexto("RESPUESTA 3");
+            this.buttonResp3.setTexto(this.arrayResp[0][2]);
             this.motor.addViewToParentView(this.w2,this.buttonResp3);
             //CREAMOS BOTON RESPUESTA 4
             this.buttonResp4 = new Button (this.motor,520,320,200,100);
-            this.buttonResp4.setTexto("RESPUESTA 4");
+            this.buttonResp4.setTexto(this.arrayResp[0][3]);
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
         }
         if(btn==this.buttonContinuar){
