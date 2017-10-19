@@ -82,6 +82,9 @@ export class Button extends View {
     public setTexto(vtexto:string){
         this.lblTexto.setTexto(vtexto);
     }
+    public getLbl():Label{
+       return this.lblTexto;
+    }
 
     /**
      * Metodo heredado del padre View que se ejecutara cuando detecte que en el View se ha pinchado con el raton.
@@ -94,6 +97,8 @@ export class Button extends View {
     
 
 }
+
+
 
 /**
  * Interface que representara el listener del Boton.

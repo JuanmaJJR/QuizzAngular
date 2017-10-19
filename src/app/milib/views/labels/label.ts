@@ -113,4 +113,9 @@ export class Label extends View{
         this.sTexto=vtexto;
     }
 
+    
+    public getTexto():string{
+        return this.sTexto;
+    }
+
 }

@@ -19,7 +19,9 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private buttonNuevo:Button;
     private buttonContinuar:Button;
     private imagenCentro:Imagen;
+    private imagenGanar:Imagen;
     private w2:Window;
+    private w3:Window;
     private pmw=DataHolder.instance.nScreenWidth*0.6;
     private pmx=DataHolder.instance.nScreenWidth2-(this.pmw>>1);
     private pmh=DataHolder.instance.nScreenHeight*0.6;
@@ -45,7 +47,8 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
         this.arrayPreguntas=["¿Qué es una criptomoneda?"," ¿No existen entonces monedas y billetes de divisas digitales?"," Si no hay bancos centrales, ¿quién está detrás de las criptomonedas?"];
-        this.arrayResp=[["Medio digital de intercambio","Moneda oficial del planeta cripto","Es una moneda intercambiable en un videojuego", "Una equacion matemática"]];
+        this.arrayResp=[["Medio digital de intercambio","Moneda oficial del planeta cripto","Es una moneda intercambiable en un videojuego", "Una equacion matemática"],["Si existen", "No existen", "Solo algunos privilegiados","Existen y son de chocolate"],["Yo","Bankia","Una mezcla bionica de Steve Jobs y Billgates","En la mayoria de casos es desconocido"]];
+        this.arrayRespCorrec=["Medio digital de intercambio","No existen","En la mayoria de casos es desconocido"];
     }
 
     /**
@@ -105,17 +108,21 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonResp1 = new Button (this.motor,120,220,200,100);
             this.buttonResp1.setTexto(this.arrayResp[0][0]);
             this.motor.addViewToParentView(this.w2,this.buttonResp1);
+            this.buttonResp1.setListener(this);
             //CREAMOS BOTON RESPUESTA 2
             this.buttonResp2 = new Button (this.motor,520,220,200,100);
             this.buttonResp2.setTexto(this.arrayResp[0][1]);
+            this.buttonResp2.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp2);
             //CREAMOS BOTON RESPUESTA 3
             this.buttonResp3 = new Button (this.motor,120,320,200,100);
             this.buttonResp3.setTexto(this.arrayResp[0][2]);
+            this.buttonResp3.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp3);
             //CREAMOS BOTON RESPUESTA 4
             this.buttonResp4 = new Button (this.motor,520,320,200,100);
             this.buttonResp4.setTexto(this.arrayResp[0][3]);
+            this.buttonResp4.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
         }
         if(btn==this.buttonContinuar){
@@ -125,9 +132,32 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonNuevo.setTexto("ADIOS");
         }
         if(btn==this.buttonX){
-            this.lblPreg.setTexto("salimos");
             this.motor.setViewVisibility(this.w2.uid,false);
         }
+        if(btn.getLbl().getTexto()==this.arrayRespCorrec[0]){
+            this.lblPreg.setTexto(this.arrayPreguntas[1]);
+            this.buttonResp1.setTexto(this.arrayResp[1][0]);
+            this.buttonResp2.setTexto(this.arrayResp[1][1]);
+            this.buttonResp3.setTexto(this.arrayResp[1][2]);
+            this.buttonResp4.setTexto(this.arrayResp[1][3]);
+        }
+        else if(btn.getLbl().getTexto()==this.arrayRespCorrec[1]){
+            this.lblPreg.setTexto(this.arrayPreguntas[2]);
+            this.buttonResp1.setTexto(this.arrayResp[2][0]);
+            this.buttonResp2.setTexto(this.arrayResp[2][1]);
+            this.buttonResp3.setTexto(this.arrayResp[2][2]);
+            this.buttonResp4.setTexto(this.arrayResp[2][3]);
+        }
+        else if(btn.getLbl().getTexto()==this.arrayRespCorrec[2]){
+            this.w3=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
+            this.motor.addViewToParentView(this.imagenFondo,this.w3);
+            this.imagenGanar=new Imagen(this.motor,0,0,this.pmw,this.pmh);
+            this.imagenGanar.setImg('./assets/hasganado.jpg');
+            this.motor.addViewToParentView(this.w3,this.imagenGanar);
+
+        }
+        
+    
         
 
     }
