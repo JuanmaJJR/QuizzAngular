@@ -10,6 +10,8 @@ import {Label} from '../milib/views/labels/label';
 
 export class Actividad1 implements EventsAdminListener,ButtonListener{
 
+    //NG BUILD --PROD
+
     private motor:Motor;
     private panelMenu:Panel;
     private panelJuego:Panel;
@@ -100,7 +102,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.lblPreg.setTexto(this.arrayPreguntas[0]);
             this.motor.addViewToParentView(this.w2,this.lblPreg);
             //CREAMOS BOTON X
-            this.buttonX = new Button (this.motor,700,-30,200,100);
+            this.buttonX = new Button (this.motor,this.pmx*0.9,this.pmy*0.1,200,100);
             this.buttonX.setTexto("X");
             this.motor.addViewToParentView(this.w2,this.buttonX);
             this.buttonX.setListener(this);

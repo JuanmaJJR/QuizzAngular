@@ -17,6 +17,12 @@ export class Window extends View{
         vctx.fillRect(this.x, this.y, this.w, this.h);
         
     }
+    public setSize(vWidth:number,vHeight:number):void{
+        super.setSize(vWidth,vHeight);
+    }
+    public setPosition(vX:number,vY:number):void{
+        super.setPosition(vX,vY);
+    }
 
 
 }

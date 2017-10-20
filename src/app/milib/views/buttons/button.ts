@@ -95,6 +95,13 @@ export class Button extends View {
         if(this.listener!=null && this.listener.buttonListenerOnClick!=undefined)
             this.listener.buttonListenerOnClick(this);
     }
+    public setSize(vWidth:number,vHeight:number):void{
+        super.setSize(vWidth,vHeight);
+        this.lblTexto.setSize(this.w,this.h);
+    }
+    public setPosition(vX:number,vY:number):void{
+        super.setPosition(vX,vY);
+    }
     
 
 }

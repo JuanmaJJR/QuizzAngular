@@ -65,9 +65,13 @@ export class View{
      * @param vHeight Alto nuevo del view.
      */
     public setSize(vWidth:number,vHeight:number):void{
-            this.w=vWidth;
-            this.h=vHeight;
-    }
+        this.w=vWidth;
+        this.h=vHeight;
+}
+public setPosition(vX:number,vY:number):void{
+    this.x=vX;
+    this.y=vY;
+}
 
     /**
      * Metodo que revisa si el pixel en la posicion X e Y (px y py) se encuentran dentro del view. Metodo usado para detectar
