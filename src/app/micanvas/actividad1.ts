@@ -38,6 +38,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private arrayResp: any[];
     private arrayRespCorrec: any[];
     private imagenTitulo:Imagen;
+    private imagenW2:Imagen;
 
     
     
@@ -104,10 +105,16 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             //CREAMOS WINDOW NUEVO
             this.w2=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
             this.motor.addViewToParentView(this.imagenFondo,this.w2);
+            //IMAGEN PARA EL WINDOW
+            this.imagenW2=new Imagen(this.motor,0,0,this.pmw,this.pmh);
+            this.imagenW2.setImg('./assets/2.jpg')
+            this.motor.addViewToParentView(this.w2,this.imagenW2);
+
             //CREAMOS LABEL DE LA PREGUNTA
             this.lblPreg= new Label(this.motor,this.pmx*1.3,40,200,100);
             this.lblPreg.setTexto(this.arrayPreguntas[0]);
             this.motor.addViewToParentView(this.w2,this.lblPreg);
+            this.lblPreg.setFontStyle("25px Comic Sans");
             //CREAMOS BOTON X
             this.buttonX = new Button (this.motor,this.pmx*2.85,0,50,50);
             this.buttonX.setTexto("");
