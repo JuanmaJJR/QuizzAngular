@@ -37,6 +37,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private arrayPreguntas: any[];
     private arrayResp: any[];
     private arrayRespCorrec: any[];
+    private imagenTitulo:Imagen;
 
     
     
@@ -62,27 +63,33 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.window1=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
         this.motor.addViewToParentView(this.imagenFondo,this.window1);
 
+        //CREAMOS IMAGEN CON TITULO
+        this.imagenTitulo=new Imagen(this.motor,this.pmx,this.pmy-250,this.pmw/1,this.pmh/1.5);
+        this.imagenTitulo.setImg('./assets/tcr.png')
+        this.motor.addViewToParentView(this.imagenFondo,this.imagenTitulo);
+
+
         //CREAMOS IMAGEN Y AÑADIMOS AL WINDOW CENTRAL
        this.imagenCentro=new Imagen(this.motor,0,0,this.pmw,this.pmh);
-       this.imagenCentro.setImg('./assets/quiz.jpg');
+       this.imagenCentro.setImg('./assets/btc.jpg');
        this.motor.addViewToParentView(this.window1,this.imagenCentro);
         
 
        //AÑADIR BOTON SALIR
-       this.buttonSalir=new Button(this.motor,340,320,200,100);
+       this.buttonSalir=new Button(this.motor,this.pmx*0.4,this.pmy*2.1,200,100);
        this.buttonSalir.setTexto("SALIR");
        this.motor.addViewToParentView(this.window1,this.buttonSalir);
        this.buttonSalir.setImagePath('./assets/btn.png')
        this.buttonSalir.setListener(this);
        
        //AÑADIR BOTON CONTINUAR
-       this.buttonContinuar=new Button(this.motor,340,180,200,100);
+       this.buttonContinuar=new Button(this.motor,this.pmx*0.4,this.pmy*1.2,200,100);
        this.buttonContinuar.setTexto("CONTINUAR");
        this.motor.addViewToParentView(this.window1,this.buttonContinuar);
        this.buttonContinuar.setImagePath('./assets/btn.png');
        this.buttonContinuar.setListener(this);
        //AÑADIR BOTON NUEVO
-       this.buttonNuevo=new Button(this.motor,340,40,200,100);
+       this.buttonNuevo=new Button(this.motor,this.pmx*0.4,this.pmy*0.3,200,100);
        this.buttonNuevo.setTexto("NUEVO");
        this.motor.addViewToParentView(this.window1,this.buttonNuevo);
        this.buttonNuevo.setImagePath('./assets/btn.png');
@@ -98,31 +105,32 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.w2=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
             this.motor.addViewToParentView(this.imagenFondo,this.w2);
             //CREAMOS LABEL DE LA PREGUNTA
-            this.lblPreg= new Label(this.motor,340,40,200,100);
+            this.lblPreg= new Label(this.motor,this.pmx*1.3,40,200,100);
             this.lblPreg.setTexto(this.arrayPreguntas[0]);
             this.motor.addViewToParentView(this.w2,this.lblPreg);
             //CREAMOS BOTON X
-            this.buttonX = new Button (this.motor,this.pmx*0.9,this.pmy*0.1,200,100);
-            this.buttonX.setTexto("X");
+            this.buttonX = new Button (this.motor,this.pmx*2.85,0,50,50);
+            this.buttonX.setTexto("");
             this.motor.addViewToParentView(this.w2,this.buttonX);
             this.buttonX.setListener(this);
+            this.buttonX.setImagePath('./assets/x.png');
             //CREAMOS BOTON RESPUESTA 1
-            this.buttonResp1 = new Button (this.motor,120,220,200,100);
+            this.buttonResp1 = new Button (this.motor,this.pmx*0.7,this.pmy*1.5,200,100);
             this.buttonResp1.setTexto(this.arrayResp[0][0]);
             this.motor.addViewToParentView(this.w2,this.buttonResp1);
             this.buttonResp1.setListener(this);
             //CREAMOS BOTON RESPUESTA 2
-            this.buttonResp2 = new Button (this.motor,520,220,200,100);
+            this.buttonResp2 = new Button (this.motor,this.pmx*1.9,this.pmy*1.5,200,100);
             this.buttonResp2.setTexto(this.arrayResp[0][1]);
             this.buttonResp2.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp2);
             //CREAMOS BOTON RESPUESTA 3
-            this.buttonResp3 = new Button (this.motor,120,320,200,100);
+            this.buttonResp3 = new Button (this.motor,this.pmx*0.7,this.pmy*2.2,200,100);
             this.buttonResp3.setTexto(this.arrayResp[0][2]);
             this.buttonResp3.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp3);
             //CREAMOS BOTON RESPUESTA 4
-            this.buttonResp4 = new Button (this.motor,520,320,200,100);
+            this.buttonResp4 = new Button (this.motor,this.pmx*1.9,this.pmy*2.2,200,100);
             this.buttonResp4.setTexto(this.arrayResp[0][3]);
             this.buttonResp4.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
@@ -138,6 +146,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         //SALIMOS AL MENU INICIAL
         if(btn==this.buttonX){
             this.motor.setViewVisibility(this.w2.uid,false);
+            this.motor.setViewVisibility(this.w3.uid,false);
         }
         //SI ACIERTAS LA PRIMERA PREGUNTA
         if(btn.getLbl().getTexto()==this.arrayRespCorrec[0]){
@@ -163,6 +172,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.imagenGanar=new Imagen(this.motor,0,0,this.pmw,this.pmh);
             this.imagenGanar.setImg('./assets/hasganado.jpg');
             this.motor.addViewToParentView(this.w3,this.imagenGanar);
+            this.motor.addViewToParentView(this.w3,this.buttonX);
 
         }
 
@@ -186,7 +196,23 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
 
 
     screenSizeChanged?(vWidth:number,vHeight:number):void{
-        console.log("SE HA ACTUALIZADO EL TEMAÑO DE LA PANTALLA");
+        //AJUSTAMOS LA POSICION DE LOS BOTON Y EL LBLPREGUNTA CUANDO LA PANTALLA CAMBIE DE TAMAÑO, PARA AJUSTARLA.
+
+        this.buttonNuevo.setPosition(this.pmx*1.3,this.pmy*0.3);
+        this.buttonSalir.setPosition(this.pmx*1.3,this.pmy*2.1);
+        this.buttonContinuar.setPosition(this.pmx*1.3,this.pmy*1.2);
+
+
+        this.buttonX.setPosition(this.pmx*2.5,0);
+
+
+        this.buttonResp1.setPosition(this.pmx*0.7,this.pmy*1.5);
+        this.buttonResp2.setPosition(this.pmx*1.9,this.pmy*1.5);
+        this.buttonResp3.setPosition(this.pmx*0.7,this.pmy*2.2);
+        this.buttonResp4.setPosition(this.pmx*1.9,this.pmy*2.2);
+        this.lblPreg.setPosition(this.pmx*1.9,this.pmy*2.2)
+
+    
       }
 
 }
