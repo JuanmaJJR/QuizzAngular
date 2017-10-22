@@ -34,16 +34,21 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private buttonResp3:Button;
     private buttonResp4:Button;
     private buttonX:Button;
+    private buttonX2:Button;
     private arrayPreguntas: any[];
     private arrayResp: any[];
     private arrayRespCorrec: any[];
     private imagenTitulo:Imagen;
     private imagenW2:Imagen;
+    private imagenComo:Imagen;
     private buttonComo:Button;
     private wComo:Window;
     private lblComo:Label;
     private lbl2Como:Label;
     private lbl3Como:Label;
+    private lbl4Como:Label;
+    private lbla:Label;
+    private lblPreg1:Label;
 
     
     
@@ -106,6 +111,12 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
        this.motor.addViewToParentView(this.window1,this.buttonNuevo);
        this.buttonNuevo.setImagePath('./assets/btn.png');
        this.buttonNuevo.setListener(this);
+
+        //LABEL PARA SETEAR FONTS :P
+        this.lbla= new Label(this.motor,this.pmx*1.3,40,0,0);
+        this.motor.addViewToParentView(this.window1,this.lbla);
+        this.lbla.setTexto(""); 
+        this.lbla.setFontStyle("12px Comic Sans MS");
        
        
 
@@ -125,7 +136,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.lblPreg= new Label(this.motor,this.pmx*1.3,40,200,100);
             this.lblPreg.setTexto(this.arrayPreguntas[0]);
             this.motor.addViewToParentView(this.w2,this.lblPreg);
-            this.lblPreg.setFontStyle("25px Comic Sans");
+            this.lblPreg.setFontStyle("20px Comic Sans MS");
             //CREAMOS BOTON X
             this.buttonX = new Button (this.motor,this.pmx*2.85,0,50,50);
             this.buttonX.setTexto("");
@@ -133,45 +144,71 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonX.setListener(this);
             this.buttonX.setImagePath('./assets/x.png');
             //CREAMOS BOTON RESPUESTA 1
-            this.buttonResp1 = new Button (this.motor,this.pmx*0.7,this.pmy*1.5,200,100);
+            this.buttonResp1 = new Button (this.motor,this.pmx*0.7,this.pmy*1.5,300,100);
             this.buttonResp1.setTexto(this.arrayResp[0][0]);
+            this.buttonResp1.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp1);
             this.buttonResp1.setListener(this);
             //CREAMOS BOTON RESPUESTA 2
-            this.buttonResp2 = new Button (this.motor,this.pmx*1.9,this.pmy*1.5,200,100);
+            this.buttonResp2 = new Button (this.motor,this.pmx*1.9,this.pmy*1.5,300,100);
             this.buttonResp2.setTexto(this.arrayResp[0][1]);
             this.buttonResp2.setListener(this);
+            this.buttonResp2.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp2);
             //CREAMOS BOTON RESPUESTA 3
-            this.buttonResp3 = new Button (this.motor,this.pmx*0.7,this.pmy*2.2,200,100);
+            this.buttonResp3 = new Button (this.motor,this.pmx*0.7,this.pmy*2.2,300,100);
             this.buttonResp3.setTexto(this.arrayResp[0][2]);
             this.buttonResp3.setListener(this);
+            this.buttonResp3.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp3);
             //CREAMOS BOTON RESPUESTA 4
-            this.buttonResp4 = new Button (this.motor,this.pmx*1.9,this.pmy*2.2,200,100);
+            this.buttonResp4 = new Button (this.motor,this.pmx*1.9,this.pmy*2.2,300,100);
             this.buttonResp4.setTexto(this.arrayResp[0][3]);
             this.buttonResp4.setListener(this);
+            this.buttonResp4.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
         }
         //CREAMOS PANTALLA COMO JUGAR
         if(btn==this.buttonComo){
             this.wComo=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
             this.motor.addViewToParentView(this.imagenFondo,this.wComo);
-            this.lblPreg= new Label(this.motor,this.pmx*1.3,40,200,100);
-            this.lblPreg.setTexto("¿COMO JUGAR?");
-            this.motor.addViewToParentView(this.wComo,this.lblPreg);
+            //IMAGEN PARA EL FONDO 
+            this.imagenComo=new Imagen(this.motor,0,0,this.pmw,this.pmh);
+            this.imagenComo.setImg('./assets/lt.jpg')
+            this.motor.addViewToParentView(this.wComo,this.imagenComo);
+           
+
+
+            this.lblPreg1= new Label(this.motor,this.pmx*1.3,40,200,100);
+            this.lblPreg1.setTexto("¿COMO JUGAR?");
+            this.lblPreg1.setFontStyle("27px Impact");
+            this.motor.addViewToParentView(this.wComo,this.lblPreg1);
+            
             //LBL 1 TEXTO DESCRIPTIVO
-            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*1.3,200,100);
-            this.lblComo.setTexto("- Cada vez que aciertes, recibiras 1 BTC y pasaras a la siguiente pregunta");
+            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*0.8,200,100);
+            this.lblComo.setTexto(" Cada vez que aciertes, recibiras 1 BTC y pasaras a la siguiente pregunta");
             this.motor.addViewToParentView(this.wComo,this.lblComo);
+            
             //LBL 2 TEXTO DESCRIPTIVO
-            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*1.5,200,100);
-            this.lblComo.setTexto("-Si fallas una vez, recibiras 1 ETH cada vez que aciertes");
-            this.motor.addViewToParentView(this.wComo,this.lblComo);
+            this.lbl2Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.2,200,100);
+            this.lbl2Como.setTexto("Si fallas una vez, recibiras 1 ETH cada vez que aciertes");
+            this.motor.addViewToParentView(this.wComo,this.lbl2Como);
             //LBL 3 TEXTO DESCRIPTIVO
-            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*1.7,200,100);
-            this.lblComo.setTexto("-Si fallas dos veces, recibiras 1 LTC cada vez que aciertes, si vuelves a fallar el juego habrá terminado");
-            this.motor.addViewToParentView(this.wComo,this.lblComo);
+            this.lbl3Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.6,200,100);
+            this.lbl3Como.setTexto("Si fallas dos veces, recibiras 1 LTC cada vez que aciertes");
+            this.motor.addViewToParentView(this.wComo,this.lbl3Como);
+            //LBL 4 TEXTO DESCRIPTIVO
+            this.lbl4Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.9,200,100);
+            this.lbl4Como.setTexto("Si vuelves a fallar el juego habrá terminado");
+            this.motor.addViewToParentView(this.wComo,this.lbl4Como);
+            
+            //BTN VOLVER AL MENU
+            this.buttonX2 = new Button (this.motor,this.pmx*2.85,0,50,50);
+            this.buttonX2.setTexto("");
+            this.motor.addViewToParentView(this.wComo,this.buttonX2);
+            this.buttonX2.setListener(this);
+            this.buttonX2.setImagePath('./assets/x.png');
+           
 
         }
         //VOLVEMOS A LA PANTALLA EN LA QUE ESTABAMOS JUGANDO
@@ -187,6 +224,9 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         if(btn==this.buttonX){
             this.motor.setViewVisibility(this.w2.uid,false);
             this.motor.setViewVisibility(this.w3.uid,false);
+        }
+        if(btn==this.buttonX2){
+            this.motor.setViewVisibility(this.wComo.uid,false);
         }
         //SI ACIERTAS LA PRIMERA PREGUNTA
         if(btn.getLbl().getTexto()==this.arrayRespCorrec[0]){
