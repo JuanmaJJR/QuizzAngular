@@ -39,6 +39,11 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private arrayRespCorrec: any[];
     private imagenTitulo:Imagen;
     private imagenW2:Imagen;
+    private buttonComo:Button;
+    private wComo:Window;
+    private lblComo:Label;
+    private lbl2Como:Label;
+    private lbl3Como:Label;
 
     
     
@@ -75,6 +80,12 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
        this.imagenCentro.setImg('./assets/btc.jpg');
        this.motor.addViewToParentView(this.window1,this.imagenCentro);
         
+       //AÑADIR BOTON COMO JUGAR
+       this.buttonComo=new Button(this.motor,this.pmx*2.7,this.pmy*2.7,100,50);
+       this.buttonComo.setTexto("COMO JUGAR");
+       this.motor.addViewToParentView(this.window1,this.buttonComo);
+       this.buttonComo.setImagePath('./assets/btn.png')
+       this.buttonComo.setListener(this);
 
        //AÑADIR BOTON SALIR
        this.buttonSalir=new Button(this.motor,this.pmx*0.4,this.pmy*2.1,200,100);
@@ -142,12 +153,34 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.buttonResp4.setListener(this);
             this.motor.addViewToParentView(this.w2,this.buttonResp4);
         }
+        //CREAMOS PANTALLA COMO JUGAR
+        if(btn==this.buttonComo){
+            this.wComo=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
+            this.motor.addViewToParentView(this.imagenFondo,this.wComo);
+            this.lblPreg= new Label(this.motor,this.pmx*1.3,40,200,100);
+            this.lblPreg.setTexto("¿COMO JUGAR?");
+            this.motor.addViewToParentView(this.wComo,this.lblPreg);
+            //LBL 1 TEXTO DESCRIPTIVO
+            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*1.3,200,100);
+            this.lblComo.setTexto("- Cada vez que aciertes, recibiras 1 BTC y pasaras a la siguiente pregunta");
+            this.motor.addViewToParentView(this.wComo,this.lblComo);
+            //LBL 2 TEXTO DESCRIPTIVO
+            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*1.5,200,100);
+            this.lblComo.setTexto("-Si fallas una vez, recibiras 1 ETH cada vez que aciertes");
+            this.motor.addViewToParentView(this.wComo,this.lblComo);
+            //LBL 3 TEXTO DESCRIPTIVO
+            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*1.7,200,100);
+            this.lblComo.setTexto("-Si fallas dos veces, recibiras 1 LTC cada vez que aciertes, si vuelves a fallar el juego habrá terminado");
+            this.motor.addViewToParentView(this.wComo,this.lblComo);
+
+        }
         //VOLVEMOS A LA PANTALLA EN LA QUE ESTABAMOS JUGANDO
         if(btn==this.buttonContinuar){
             this.motor.setViewVisibility(this.w2.uid,true);
         }
         //SALIR DEL JUEGO
         if(btn==this.buttonSalir){
+            this.wComo=new Window(this.motor,this.pmx,this.pmy,this.pmw,this.pmh);
             this.buttonNuevo.setTexto("ADIOS");
         }
         //SALIMOS AL MENU INICIAL
