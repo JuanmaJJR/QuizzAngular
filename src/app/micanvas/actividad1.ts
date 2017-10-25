@@ -258,6 +258,11 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.imagenGanar.setImg('./assets/hasganado.jpg');
             this.motor.addViewToParentView(this.w3,this.imagenGanar);
             this.motor.addViewToParentView(this.w3,this.buttonX);
+            this.lblPreg.setTexto(this.arrayPreguntas[0]);
+            this.buttonResp1.setTexto(this.arrayResp[0][0]);
+            this.buttonResp2.setTexto(this.arrayResp[0][1]);
+            this.buttonResp3.setTexto(this.arrayResp[0][2]);
+            this.buttonResp4.setTexto(this.arrayResp[0][3]);
 
         }
 
