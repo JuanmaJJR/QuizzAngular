@@ -49,6 +49,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private lbl4Como:Label;
     private lbla:Label;
     private lblPreg1:Label;
+    private Contador;
 
     
     
@@ -61,8 +62,9 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
         this.arrayPreguntas=["¿Qué es una criptomoneda?"," ¿No existen entonces monedas y billetes de divisas digitales?"," Si no hay bancos centrales, ¿quién está detrás de las criptomonedas?"];
-        this.arrayResp=[["Medio digital de intercambio","Moneda oficial del planeta cripto","Es una moneda intercambiable en un videojuego", "Una equacion matemática"],["Si existen", "No existen", "Solo algunos privilegiados","Existen y son de chocolate"],["Yo","Bankia","Una mezcla bionica de Steve Jobs y Billgates","En la mayoria de casos es desconocido"]];
-        this.arrayRespCorrec=["Medio digital de intercambio","No existen","En la mayoria de casos es desconocido"];
+        this.arrayResp=[["Medio digital de intercambio","Moneda del planeta cripto","Moneda de un videojuego", "Una equacion matemática"],["Si existen", "No existen", "Solo algunos privilegiados","Existen y son de chocolate"],["Yo","Bankia","Billgates","Suele ser desconocido"]];
+        this.arrayRespCorrec=["Medio digital de intercambio","No existen","Suele ser desconocido"];
+        EventsAdmin.instance.addListener(this);
     }
 
     /**
@@ -86,27 +88,27 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
        this.motor.addViewToParentView(this.window1,this.imagenCentro);
         
        //AÑADIR BOTON COMO JUGAR
-       this.buttonComo=new Button(this.motor,this.pmx*2.7,this.pmy*2.7,100,50);
+       this.buttonComo=new Button(this.motor,this.pmw-this.pmw/10,this.pmh-this.pmh/12,this.pmw/10,this.pmh/12);
        this.buttonComo.setTexto("COMO JUGAR");
        this.motor.addViewToParentView(this.window1,this.buttonComo);
        this.buttonComo.setImagePath('./assets/btn.png')
        this.buttonComo.setListener(this);
 
        //AÑADIR BOTON SALIR
-       this.buttonSalir=new Button(this.motor,this.pmx*0.4,this.pmy*2.1,200,100);
+       this.buttonSalir=new Button(this.motor,this.pmx*0.4,this.pmy*2.1,this.pmw/5.5,this.pmh/6);
        this.buttonSalir.setTexto("SALIR");
        this.motor.addViewToParentView(this.window1,this.buttonSalir);
        this.buttonSalir.setImagePath('./assets/btn.png')
        this.buttonSalir.setListener(this);
        
        //AÑADIR BOTON CONTINUAR
-       this.buttonContinuar=new Button(this.motor,this.pmx*0.4,this.pmy*1.2,200,100);
+       this.buttonContinuar=new Button(this.motor,this.pmx*0.4,this.pmy*1.2,this.pmw/5.5,this.pmh/6);
        this.buttonContinuar.setTexto("CONTINUAR");
        this.motor.addViewToParentView(this.window1,this.buttonContinuar);
        this.buttonContinuar.setImagePath('./assets/btn.png');
        this.buttonContinuar.setListener(this);
        //AÑADIR BOTON NUEVO
-       this.buttonNuevo=new Button(this.motor,this.pmx*0.4,this.pmy*0.3,200,100);
+       this.buttonNuevo=new Button(this.motor,this.pmx*0.4,this.pmy*0.3,this.pmw/5.5,this.pmh/6);
        this.buttonNuevo.setTexto("NUEVO");
        this.motor.addViewToParentView(this.window1,this.buttonNuevo);
        this.buttonNuevo.setImagePath('./assets/btn.png');
@@ -133,36 +135,36 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.motor.addViewToParentView(this.w2,this.imagenW2);
 
             //CREAMOS LABEL DE LA PREGUNTA
-            this.lblPreg= new Label(this.motor,this.pmx*1.3,40,200,100);
+            this.lblPreg= new Label(this.motor,this.pmx*1.3,40,this.pmw/5.5,this.pmh/6);
             this.lblPreg.setTexto(this.arrayPreguntas[0]);
             this.motor.addViewToParentView(this.w2,this.lblPreg);
             this.lblPreg.setFontStyle("20px Comic Sans MS");
             //CREAMOS BOTON X
-            this.buttonX = new Button (this.motor,this.pmx*2.85,0,50,50);
+            this.buttonX = new Button (this.motor,this.pmw-50,0,this.pmh/12,this.pmh/12);
             this.buttonX.setTexto("");
             this.motor.addViewToParentView(this.w2,this.buttonX);
             this.buttonX.setListener(this);
             this.buttonX.setImagePath('./assets/x.png');
             //CREAMOS BOTON RESPUESTA 1
-            this.buttonResp1 = new Button (this.motor,this.pmx*0.7,this.pmy*1.5,300,100);
+            this.buttonResp1 = new Button (this.motor,0,this.pmy*1.5,this.pmw/3.5,this.pmh/6);
             this.buttonResp1.setTexto(this.arrayResp[0][0]);
             this.buttonResp1.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp1);
             this.buttonResp1.setListener(this);
             //CREAMOS BOTON RESPUESTA 2
-            this.buttonResp2 = new Button (this.motor,this.pmx*1.9,this.pmy*1.5,300,100);
+            this.buttonResp2 = new Button (this.motor,this.pmw-this.pmw/3.5,this.pmy*1.5,this.pmw/3.5,this.pmh/6);
             this.buttonResp2.setTexto(this.arrayResp[0][1]);
             this.buttonResp2.setListener(this);
             this.buttonResp2.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp2);
             //CREAMOS BOTON RESPUESTA 3
-            this.buttonResp3 = new Button (this.motor,this.pmx*0.7,this.pmy*2.2,300,100);
+            this.buttonResp3 = new Button (this.motor,0,this.pmy*2.2,this.pmw/3.5,this.pmh/6);
             this.buttonResp3.setTexto(this.arrayResp[0][2]);
             this.buttonResp3.setListener(this);
             this.buttonResp3.setImagePath('./assets/btn2.png');
             this.motor.addViewToParentView(this.w2,this.buttonResp3);
             //CREAMOS BOTON RESPUESTA 4
-            this.buttonResp4 = new Button (this.motor,this.pmx*1.9,this.pmy*2.2,300,100);
+            this.buttonResp4 = new Button (this.motor,this.pmw-this.pmw/3.5,this.pmy*2.2,this.pmw/3.5,this.pmh/6);
             this.buttonResp4.setTexto(this.arrayResp[0][3]);
             this.buttonResp4.setListener(this);
             this.buttonResp4.setImagePath('./assets/btn2.png');
@@ -181,29 +183,29 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
 
             this.lblPreg1= new Label(this.motor,this.pmx*1.3,40,200,100);
             this.lblPreg1.setTexto("¿COMO JUGAR?");
-            this.lblPreg1.setFontStyle("27px Impact");
+            this.lblPreg1.setFontStyle("23px Impact");
             this.motor.addViewToParentView(this.wComo,this.lblPreg1);
             
             //LBL 1 TEXTO DESCRIPTIVO
-            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*0.8,200,100);
+            this.lblComo= new Label(this.motor,this.pmx*1.3,this.pmy*0.8,this.pmw/10,this.pmh/12);
             this.lblComo.setTexto(" Cada vez que aciertes, recibiras 1 BTC y pasaras a la siguiente pregunta");
             this.motor.addViewToParentView(this.wComo,this.lblComo);
             
             //LBL 2 TEXTO DESCRIPTIVO
-            this.lbl2Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.2,200,100);
+            this.lbl2Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.2,this.pmw/10,this.pmh/12);
             this.lbl2Como.setTexto("Si fallas una vez, recibiras 1 ETH cada vez que aciertes");
             this.motor.addViewToParentView(this.wComo,this.lbl2Como);
             //LBL 3 TEXTO DESCRIPTIVO
-            this.lbl3Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.6,200,100);
+            this.lbl3Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.6,this.pmw/10,this.pmh/12);
             this.lbl3Como.setTexto("Si fallas dos veces, recibiras 1 LTC cada vez que aciertes");
             this.motor.addViewToParentView(this.wComo,this.lbl3Como);
             //LBL 4 TEXTO DESCRIPTIVO
-            this.lbl4Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.9,200,100);
+            this.lbl4Como= new Label(this.motor,this.pmx*1.3,this.pmy*1.9,this.pmw/10,this.pmh/12);
             this.lbl4Como.setTexto("Si vuelves a fallar el juego habrá terminado");
             this.motor.addViewToParentView(this.wComo,this.lbl4Como);
             
             //BTN VOLVER AL MENU
-            this.buttonX2 = new Button (this.motor,this.pmx*2.85,0,50,50);
+            this.buttonX2 = new Button (this.motor,this.pmw-50,0,this.pmh/12,this.pmh/12);
             this.buttonX2.setTexto("");
             this.motor.addViewToParentView(this.wComo,this.buttonX2);
             this.buttonX2.setListener(this);
@@ -227,6 +229,9 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         }
         if(btn==this.buttonX2){
             this.motor.setViewVisibility(this.wComo.uid,false);
+        }
+        if(btn==this.buttonSalir){
+            this.motor.setViewVisibility(this.window1.uid,false);
         }
         //SI ACIERTAS LA PRIMERA PREGUNTA
         if(btn.getLbl().getTexto()==this.arrayRespCorrec[0]){
@@ -276,22 +281,109 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
 
 
     screenSizeChanged?(vWidth:number,vHeight:number):void{
+        let pmw=DataHolder.instance.nScreenWidth*0.6;
+        let pmx=DataHolder.instance.nScreenWidth2-(pmw>>1);
+        let pmh=DataHolder.instance.nScreenHeight*0.6;
+        let pmy=DataHolder.instance.nScreenHeight2-(pmh>>1);
+       
         //AJUSTAMOS LA POSICION DE LOS BOTON Y EL LBLPREGUNTA CUANDO LA PANTALLA CAMBIE DE TAMAÑO, PARA AJUSTARLA.
+        
 
-        this.buttonNuevo.setPosition(this.pmx*1.3,this.pmy*0.3);
-        this.buttonSalir.setPosition(this.pmx*1.3,this.pmy*2.1);
-        this.buttonContinuar.setPosition(this.pmx*1.3,this.pmy*1.2);
+        
+        console.log("SE HA ACTUALIZADO EL TEMAÑO DE LA PANTALLA");
+        this.imagenFondo.setSize(DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+
+        this.window1.setPosition(pmx,pmy);
+        this.window1.setSize(pmw,pmh);
+
+        this.imagenTitulo.setSize(pmw/1,pmh/1.5);
+        this.imagenTitulo.setPosition(pmx,pmy-pmh/2);
+        
+        this.wComo.setPosition(pmx,pmy);
+        this.wComo.setSize(pmw,pmh);
+
+        this.imagenComo.setPosition(0,0);
+        this.imagenComo.setSize(pmw,pmh);
 
 
-        this.buttonX.setPosition(this.pmx*2.5,0);
+        this.lblPreg1.setPosition(pmx*1.3,40);
+        this.lblPreg1.setSize(pmw/5.5,pmh/6);
+        this.lblComo.setPosition(pmx*1.3,pmy*0.8);
+        this.lblComo.setSize(pmw/10,pmh/12);
+
+        this.lbl2Como.setPosition(pmx*1.3,pmy*1.2);
+        this.lbl2Como.setSize(pmw/10,pmh/12);
+
+        this.lbl3Como.setPosition(pmx*1.3,pmy*1.6);
+        this.lbl3Como.setSize(pmw/10,pmh/12);
+
+        this.lbl4Como.setPosition(pmx*1.3,pmy*1.9);
+        this.lbl4Como.setSize(pmw/10,pmh/12);
+        
+        this.buttonX2.setPosition(pmw-50,0);
+        this.buttonX2.setSize(pmh/12,pmh/12);
 
 
-        this.buttonResp1.setPosition(this.pmx*0.7,this.pmy*1.5);
-        this.buttonResp2.setPosition(this.pmx*1.9,this.pmy*1.5);
-        this.buttonResp3.setPosition(this.pmx*0.7,this.pmy*2.2);
-        this.buttonResp4.setPosition(this.pmx*1.9,this.pmy*2.2);
-        this.lblPreg.setPosition(this.pmx*1.9,this.pmy*2.2)
+        
+        this.imagenCentro.setPosition(0,0);
+        this.imagenCentro.setSize(pmw,pmh);
+         this.buttonComo.setPosition(pmw-pmw/10,pmh-pmh/12);
+        this.buttonComo.setSize(pmw/10,pmh/12);
 
+
+
+        this.buttonNuevo.setPosition(pmx*0.4,pmy*0.3);
+        this.buttonNuevo.setSize(pmw/5.5,pmh/6);
+
+
+       this.buttonSalir.setPosition(pmx*0.4,pmy*2.1);
+       this.buttonSalir.setSize(pmw/5.5,pmh/6);
+
+
+
+       this.buttonContinuar.setPosition(pmx*0.4,pmy*1.2);
+       this.buttonContinuar.setSize(pmw/5.5,pmh/6);
+
+
+       this.buttonX.setPosition(pmw-50,0);
+       this.buttonX.setSize(pmh/12,pmh/12);
+
+       /////////
+
+       this.w2.setPosition(pmx,pmy);
+       this.w2.setSize(pmw,pmh);
+
+       this.imagenW2.setPosition(0,0);
+       this.imagenW2.setSize(pmw,pmh);
+
+       this.lblPreg.setPosition(pmx*1.3,40);
+       this.lblPreg.setSize(pmw/5.5,pmh/6);
+       //
+
+        
+       //
+
+        this.buttonResp1.setPosition(0,pmy*1.5);
+        this.buttonResp1.setSize(pmw/3.5,pmh/6);
+        this.buttonResp2.setPosition(pmw-pmw/3.5,pmy*1.5);
+        this.buttonResp2.setSize(pmw/3.5,pmh/6);
+        this.buttonResp3.setPosition(0,pmy*2.2);
+        this.buttonResp3.setSize(pmw/3.5,pmh/6);
+        this.buttonResp4.setPosition(pmw-pmw/3.5,pmy*2.2);
+        this.buttonResp4.setSize(pmw/3.5,pmh/6);
+        //
+
+
+
+        this.w3.setPosition(pmx,pmy);
+        this.w3.setSize(pmw,pmh);
+
+        this.imagenGanar.setPosition(0,0);
+        this.imagenGanar.setSize(pmw,pmh);
+
+        
+
+      
     
       }
 

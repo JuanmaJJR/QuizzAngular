@@ -98,6 +98,7 @@ export class Button extends View {
     public setSize(vWidth:number,vHeight:number):void{
         super.setSize(vWidth,vHeight);
         this.lblTexto.setSize(this.w,this.h);
+        this.imgBack.setSize(vWidth,vHeight);
     }
     public setPosition(vX:number,vY:number):void{
         super.setPosition(vX,vY);

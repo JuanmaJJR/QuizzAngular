@@ -112,6 +112,10 @@ export class Label extends View{
     public setTexto(vtexto:string){
         this.sTexto=vtexto;
     }
+    public setSize(vWidth:number,vHeight:number):void{
+        super.setSize(vWidth,vHeight);
+        this.setTextAttrs(this.sAlign,this.sBaseLine);
+}
 
     //HEMOS CREADO ESTE METODO PARA SACAR EL TEXTO DEL BOTON SELECCIONADO
     public getTexto():string{

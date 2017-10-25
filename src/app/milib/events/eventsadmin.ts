@@ -79,5 +79,6 @@ export interface EventsAdminListener{
      * Metodo que se llamara cuando EventsAdmin quiera notificar a los subscriptores que ha cambiado el tamaño de pantalla.
      */
     screenSizeChanged?(vWidth:number,vHeight:number):void;
+    screenSizePosition?(vX:number,vY:number):void;
    
 }
