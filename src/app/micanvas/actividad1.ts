@@ -299,29 +299,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.imagenTitulo.setSize(pmw/1,pmh/1.5);
         this.imagenTitulo.setPosition(pmx,pmy-pmh/2);
         
-        this.wComo.setPosition(pmx,pmy);
-        this.wComo.setSize(pmw,pmh);
-
-        this.imagenComo.setPosition(0,0);
-        this.imagenComo.setSize(pmw,pmh);
-
-
-        this.lblPreg1.setPosition(pmx*1.3,40);
-        this.lblPreg1.setSize(pmw/5.5,pmh/6);
-        this.lblComo.setPosition(pmx*1.3,pmy*0.8);
-        this.lblComo.setSize(pmw/10,pmh/12);
-
-        this.lbl2Como.setPosition(pmx*1.3,pmy*1.2);
-        this.lbl2Como.setSize(pmw/10,pmh/12);
-
-        this.lbl3Como.setPosition(pmx*1.3,pmy*1.6);
-        this.lbl3Como.setSize(pmw/10,pmh/12);
-
-        this.lbl4Como.setPosition(pmx*1.3,pmy*1.9);
-        this.lbl4Como.setSize(pmw/10,pmh/12);
-        
-        this.buttonX2.setPosition(pmw-50,0);
-        this.buttonX2.setSize(pmh/12,pmh/12);
+       
 
 
         
@@ -343,6 +321,32 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
 
        this.buttonContinuar.setPosition(pmx*0.4,pmy*1.2);
        this.buttonContinuar.setSize(pmw/5.5,pmh/6);
+
+    //
+    this.wComo.setPosition(pmx,pmy);
+    this.wComo.setSize(pmw,pmh);
+
+    this.imagenComo.setPosition(0,0);
+    this.imagenComo.setSize(pmw,pmh);
+
+
+    this.lblPreg1.setPosition(pmx*1.3,40);
+    this.lblPreg1.setSize(pmw/5.5,pmh/6);
+    this.lblComo.setPosition(pmx*1.3,pmy*0.8);
+    this.lblComo.setSize(pmw/10,pmh/12);
+
+    this.lbl2Como.setPosition(pmx*1.3,pmy*1.2);
+    this.lbl2Como.setSize(pmw/10,pmh/12);
+
+    this.lbl3Como.setPosition(pmx*1.3,pmy*1.6);
+    this.lbl3Como.setSize(pmw/10,pmh/12);
+
+    this.lbl4Como.setPosition(pmx*1.3,pmy*1.9);
+    this.lbl4Como.setSize(pmw/10,pmh/12);
+    
+    this.buttonX2.setPosition(pmw-50,0);
+    this.buttonX2.setSize(pmh/12,pmh/12);
+    //
 
 
        this.buttonX.setPosition(pmw-50,0);
