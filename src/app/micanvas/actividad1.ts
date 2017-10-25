@@ -322,6 +322,23 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
        this.buttonContinuar.setPosition(pmx*0.4,pmy*1.2);
        this.buttonContinuar.setSize(pmw/5.5,pmh/6);
 
+       this.w2.setPosition(pmx,pmy);
+       this.w2.setSize(pmw,pmh);
+
+       this.imagenW2.setPosition(0,0);
+       this.imagenW2.setSize(pmw,pmh);
+
+       this.buttonResp1.setPosition(0,pmy*1.5);
+       this.buttonResp1.setSize(pmw/3.5,pmh/6);
+       this.buttonResp2.setPosition(pmw-pmw/3.5,pmy*1.5);
+       this.buttonResp2.setSize(pmw/3.5,pmh/6);
+       this.buttonResp3.setPosition(0,pmy*2.2);
+       this.buttonResp3.setSize(pmw/3.5,pmh/6);
+       this.buttonResp4.setPosition(pmw-pmw/3.5,pmy*2.2);
+       this.buttonResp4.setSize(pmw/3.5,pmh/6);
+       this.buttonX.setPosition(pmw-50,0);
+       this.buttonX.setSize(pmh/12,pmh/12);
+
     //
     this.wComo.setPosition(pmx,pmy);
     this.wComo.setSize(pmw,pmh);
@@ -349,16 +366,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     //
 
 
-       this.buttonX.setPosition(pmw-50,0);
-       this.buttonX.setSize(pmh/12,pmh/12);
-
-       /////////
-
-       this.w2.setPosition(pmx,pmy);
-       this.w2.setSize(pmw,pmh);
-
-       this.imagenW2.setPosition(0,0);
-       this.imagenW2.setSize(pmw,pmh);
+      
 
        this.lblPreg.setPosition(pmx*1.3,40);
        this.lblPreg.setSize(pmw/5.5,pmh/6);
@@ -367,14 +375,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         
        //
 
-        this.buttonResp1.setPosition(0,pmy*1.5);
-        this.buttonResp1.setSize(pmw/3.5,pmh/6);
-        this.buttonResp2.setPosition(pmw-pmw/3.5,pmy*1.5);
-        this.buttonResp2.setSize(pmw/3.5,pmh/6);
-        this.buttonResp3.setPosition(0,pmy*2.2);
-        this.buttonResp3.setSize(pmw/3.5,pmh/6);
-        this.buttonResp4.setPosition(pmw-pmw/3.5,pmy*2.2);
-        this.buttonResp4.setSize(pmw/3.5,pmh/6);
+       
         //
 
 
@@ -384,6 +385,12 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
 
         this.imagenGanar.setPosition(0,0);
         this.imagenGanar.setSize(pmw,pmh);
+
+       this.buttonX.setPosition(pmw-50,0);
+       this.buttonX.setSize(pmh/12,pmh/12);
+
+       /////////
+
 
         
 
